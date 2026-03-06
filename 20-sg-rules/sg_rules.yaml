@@ -1,0 +1,18 @@
+bastion:
+- name: bastion_internet
+  port: 22
+  src: internet
+  dest: bastion
+mongodb:
+- name: mongo_bastion
+  port: 22
+  src: bastion
+  dest: mongo
+- name: mongo_catalogue
+  port: 27017
+  src: catalogue
+  dest: mongo
+- name: mongo_user
+  port: 27017
+  src: user
+  dest: mongo
