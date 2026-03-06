@@ -36,8 +36,8 @@ resource "aws_security_group_rule" "mongo_user" {
 }
 
 resource "aws_vpc_security_group_egress_rule" "example" {
-  security_group_id = local.bastion_sg_id
-
+  count = length(local.sg_id_list)
+  security_group_id = local.sg_id_list[count.index]
   cidr_ipv4   = "0.0.0.0/0"
   from_port   = -1
   ip_protocol = "All"
