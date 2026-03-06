@@ -5,6 +5,6 @@ locals {
   user_sg_id = data.aws_ssm_parameter.user_sg_id.value
 
   sg_id_list = [
-    mongo_sg_id, catalogue_sg_id, user_sg_id
+    local.bastion_sg_id, local.mongo_sg_id, local.catalogue_sg_id, local.user_sg_id
   ]
 }

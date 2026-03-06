@@ -5,7 +5,7 @@ resource "aws_instance" "mongo" {
   vpc_security_group_ids = [local.mongo_sg_id]
   tags = merge(local.common_tags,
     {
-      Name = "${var.project}-${var.environment}-basrion"
+      Name = "${var.project}-${var.environment}-mongo"
     }
     )
 }
@@ -30,7 +30,7 @@ resource "terraform_data" "bootstrap" {
   provisioner "remote-exec" {
     inline = [ 
       "chmod +x /tmp/boostrap.sh",
-      "sudo sh /tmp/bootstrap.sh"
+      "sudo sh /tmp/bootstrap.sh mongo"
      ]
   }
 }

@@ -4,9 +4,19 @@ resource "aws_instance" "main" {
   subnet_id = local.public_subnet
   vpc_security_group_ids = [local.bastion_sg_id]
   iam_instance_profile = aws_iam_instance_profile.bastion.id
+  user_data = file("bastion.sh")
+  root_block_device {
+    volume_size = 50
+    volume_type = "gp3"
+    tags = merge(local.common_tags,
+    {
+      Name = "${var.project}-${var.environment}-voulme_ebs"
+    }
+    )
+  }
   tags = merge(local.common_tags,
     {
-      Name = "${var.project}-${var.environment}-basrion"
+      Name = "${var.project}-${var.environment}-bastion"
     }
     )
 }
