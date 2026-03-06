@@ -15,7 +15,7 @@ data "aws_ami" "ubuntu" {
 }
 
 data "aws_ssm_parameter" "database_subnet_id" {
-  name = "/${var.project}/${var.environment}/public_subnet"
+  name = "/${var.project}/${var.environment}/database_subnet"
 }
 
 data "aws_ssm_parameter" "mongo_sg_id" {
