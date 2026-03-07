@@ -3,8 +3,18 @@ locals {
   mongo_sg_id = data.aws_ssm_parameter.mongo_sg_id.value
   catalogue_sg_id = data.aws_ssm_parameter.catalogue_sg_id.value
   user_sg_id = data.aws_ssm_parameter.user_sg_id.value
+  cart_sg_id = data.aws_ssm_parameter.cart_sg_id.value
+
+  # databases
+  redis_sg_id = data.aws_ssm_parameter.redis_sg_id.value
 
   sg_id_list = [
-    local.bastion_sg_id, local.mongo_sg_id, local.catalogue_sg_id, local.user_sg_id
+    local.bastion_sg_id, local.mongo_sg_id, local.catalogue_sg_id, local.user_sg_id, redis_sg_id
   ]
+
+
+  # ports and services
+  common_port = 22
+  mongo_service_port = 27017
+  redis_service_port = 6379
 }
