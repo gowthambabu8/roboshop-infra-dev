@@ -12,7 +12,7 @@ resource "aws_instance" "redis" {
 
 resource "terraform_data" "redis_bootstrap" {
   triggers_replace = [
-    aws_instance.mongo.id
+    aws_instance.redis.id
   ]
 
   connection {
