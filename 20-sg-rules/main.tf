@@ -16,7 +16,7 @@ resource "aws_security_group_rule" "mongo_bastion" {
   security_group_id = local.mongo_sg_id
 }
 
-resource "aws_security_group_rule" "mongo_bastion" {
+resource "aws_security_group_rule" "mongo_bastion_common" {
   type = "ingress"
   from_port = local.mongo_service_port
   to_port = local.mongo_service_port
