@@ -1,7 +1,7 @@
 resource "aws_security_group_rule" "bastion_internet" {
   type = "ingress"
-  from_port = 22
-  to_port = 22
+  from_port = local.common_port
+  to_port = local.common_port
   protocol = "tcp"
   cidr_blocks = [ "0.0.0.0/0" ]
   security_group_id = local.bastion_sg_id
@@ -9,18 +9,26 @@ resource "aws_security_group_rule" "bastion_internet" {
 
 resource "aws_security_group_rule" "mongo_bastion" {
   type = "ingress"
-  from_port = 22
-  to_port = 22
+  from_port = local.common_port
+  to_port = local.common_port
   protocol = "tcp"
-  #cidr_blocks = [ "0.0.0.0/0" ]
+  source_security_group_id = local.bastion_sg_id
+  security_group_id = local.mongo_sg_id
+}
+
+resource "aws_security_group_rule" "mongo_bastion" {
+  type = "ingress"
+  from_port = local.mongo_service_port
+  to_port = local.mongo_service_port
+  protocol = "tcp"
   source_security_group_id = local.bastion_sg_id
   security_group_id = local.mongo_sg_id
 }
 
 resource "aws_security_group_rule" "mongo_catalogue" {
   type = "ingress"
-  from_port = 27017
-  to_port = 27017
+  from_port = local.mongo_service_port
+  to_port = local.mongo_service_port
   protocol = "tcp"
   source_security_group_id = local.catalogue_sg_id
   security_group_id = local.mongo_sg_id
@@ -28,8 +36,8 @@ resource "aws_security_group_rule" "mongo_catalogue" {
 
 resource "aws_security_group_rule" "mongo_user" {
   type = "ingress"
-  from_port = 27017
-  to_port = 27017
+  from_port = local.mongo_service_port
+  to_port = local.mongo_service_port
   protocol = "tcp"
   source_security_group_id = local.user_sg_id
   security_group_id = local.mongo_sg_id
