@@ -6,7 +6,7 @@ resource "aws_route53_record" "mongo" {
   records = [ aws_instance.mongo.private_ip ]
 }
 
-resource "aws_route53_record" "mongo" {
+resource "aws_route53_record" "redis" {
   zone_id = var.zone_id
   name="redis-${var.environment}.${var.domain_name}"
   type = "A"
