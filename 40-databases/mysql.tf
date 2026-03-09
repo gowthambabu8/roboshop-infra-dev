@@ -63,8 +63,8 @@ resource "aws_iam_role" "mysql" {
 }
 
 resource "aws_iam_policy" "mysql" {
-  name        = "test_policy"
-  description = "My test policy"
+  name        = "${var.project}-${var.environment}-mysql-policy"
+  description = "Instance policy to read only SSM parameter for mysql root password."
   policy = file("mysql-policy.json")
 }
 
