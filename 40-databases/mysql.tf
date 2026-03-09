@@ -31,7 +31,7 @@ resource "terraform_data" "mysql_bootstrap" {
   provisioner "remote-exec" {
     inline = [ 
       "chmod +x /tmp/bootstrap.sh",
-      "sudo sh /tmp/bootstrap.sh mysql"
+      "sudo sh /tmp/bootstrap.sh mysql ${var.environment}"
      ]
   }
 }
@@ -65,7 +65,9 @@ resource "aws_iam_role" "mysql" {
 resource "aws_iam_policy" "mysql" {
   name        = "${var.project}-${var.environment}-mysql-policy"
   description = "Instance policy to read only SSM parameter for mysql root password."
-  policy = file("mysql-policy.json")
+  policy = templatefile("mysql-policy.json",{
+    environment = var.environment
+  })
 }
 
 resource "aws_iam_role_policy_attachment" "mysql" {
