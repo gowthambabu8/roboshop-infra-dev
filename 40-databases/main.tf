@@ -10,7 +10,7 @@ resource "aws_instance" "mongo" {
     )
 }
 
-resource "terraform_data" "bootstrap" {
+resource "terraform_data" "bootstrap_mongo" {
   triggers_replace = [
     aws_instance.mongo.id
   ]

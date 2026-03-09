@@ -34,3 +34,39 @@ resource "terraform_data" "mysql_bootstrap" {
      ]
   }
 }
+
+resource "aws_iam_role" "mysql" {
+  name = "${var.project}-${var.environment}-mysql"
+
+  # Terraform's "jsonencode" function converts a
+  # Terraform expression result to valid JSON syntax.
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = "sts:AssumeRole"
+        Effect = "Allow"
+        Sid    = ""
+        Principal = {
+          Service = "ec2.amazonaws.com"
+        }
+      },
+    ]
+  })
+
+  tags = merge(local.common_tags,
+    {
+      Name = "${var.project}-${var.environment}-mysql-role"
+    }
+    )
+}
+
+resource "aws_iam_role_policy_attachment" "mysql" {
+  role       = aws_iam_role.mysql.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMReadOnlyAccess"
+}
+
+resource "aws_iam_instance_profile" "mysql" {
+  name = "mysql-instance-profile"
+  role = aws_iam_role.mysql.name
+}
