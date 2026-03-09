@@ -8,6 +8,10 @@ mongodb:
   port: 22
   src: bastion
   dest: mongo
+- name: mongo_bastion
+  port: 27017
+  src: bastion
+  dest: mongo
 - name: mongo_catalogue
   port: 27017
   src: catalogue
@@ -16,3 +20,46 @@ mongodb:
   port: 27017
   src: user
   dest: mongo
+redis:
+- name: redis_bastion
+  port: 22
+  src: bastion
+  dest: redis
+- name: redis_bastion
+  port: 6379
+  src: bastion
+  dest: redis
+- name: redis_user
+  port: 6379
+  src: user
+  dest: redis
+- name: redis_cart
+  port: 6379
+  src: user
+  dest: redis
+mysql:
+- name: mysql_bastion
+  port: 22
+  src: bastion
+  dest: mysql
+- name: mysql_bastion
+  port: 3306
+  src: user
+  dest: mysql
+- name: mysql_shipping
+  port: 3306
+  src: user
+  dest: mysql
+rabbitmq:
+- name: rabbitmq_bastion
+  port: 22
+  src: bastion
+  dest: rabbitmq
+- name: rabbitmq_bastion
+  port: 5672
+  src: user
+  dest: rabbitmq
+- name: rabbitmq_payment
+  port: 5672
+  src: user
+  dest: rabbitmq

@@ -4,7 +4,7 @@ locals {
   catalogue_sg_id = data.aws_ssm_parameter.catalogue_sg_id.value
   user_sg_id = data.aws_ssm_parameter.user_sg_id.value
   cart_sg_id = data.aws_ssm_parameter.cart_sg_id.value
-
+  mysql_sg_id = data.aws_ssm_parameter.mysql_sg_id
   # databases
   redis_sg_id = data.aws_ssm_parameter.redis_sg_id.value
 
@@ -17,4 +17,7 @@ locals {
   common_port = 22
   mongo_service_port = 27017
   redis_service_port = 6379
+  mysql_service_port = 3306
+  rabbitmq_service_port = 5672
+
 }
