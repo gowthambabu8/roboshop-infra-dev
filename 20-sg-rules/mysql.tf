@@ -7,7 +7,7 @@ resource "aws_security_group_rule" "mysql_bastion" {
   security_group_id = local.mysql_sg_id
 }
 
-resource "aws_security_group_rule" "redis_bastion_common" {
+resource "aws_security_group_rule" "mysql_bastion_common" {
   type = "ingress"
   from_port = local.mysql_service_port
   to_port = local.mysql_service_port
@@ -16,7 +16,7 @@ resource "aws_security_group_rule" "redis_bastion_common" {
   security_group_id = local.mysql_sg_id
 }
 
-resource "aws_security_group_rule" "redis_cart" {
+resource "aws_security_group_rule" "mysql_cart" {
   type = "ingress"
   from_port = local.mysql_service_port
   to_port = local.mysql_service_port
