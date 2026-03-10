@@ -16,7 +16,7 @@ resource "aws_lb_listener" "front_end" {
 
     fixed_response {
       content_type = "text/plain"
-      message_body = "Fixed response content"
+      message_body = "I am from Backend ALB"
       status_code  = "200"
     }
   }
@@ -24,7 +24,7 @@ resource "aws_lb_listener" "front_end" {
 
 resource "aws_route53_record" "backend_alb" {
   zone_id = var.zone_id
-  name = "*.backend_alb-${var.environment}.${var.domain_name} "
+  name = "*.backend_alb-${var.environment}.${var.domain_name}"
   type = "A"
 
   alias {
