@@ -6,5 +6,5 @@ locals {
     Terraform = true
   }
   private_subnet = data.aws_ssm_parameter.private_subnets_id.value
-  backend_alb_sg_id = split(",",data.aws_ssm_parameter.backend_alb_sg_id)
+  backend_alb_sg_id = split(",",data.aws_ssm_parameter.backend_alb_sg_id.value)
 }
