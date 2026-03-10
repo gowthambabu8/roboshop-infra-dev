@@ -63,3 +63,8 @@ rabbitmq:
   port: 5672
   src: user
   dest: rabbitmq
+backend_alb:
+- name: backend_alb_bastion
+  port: 22
+  src: user
+  dest: rabbitmq

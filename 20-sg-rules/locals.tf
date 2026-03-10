@@ -8,6 +8,8 @@ locals {
   mongo_sg_id = data.aws_ssm_parameter.mongo_sg_id.value
   mysql_sg_id = data.aws_ssm_parameter.mysql_sg_id.value
   rabbitmq_sg_id = data.aws_ssm_parameter.rabbitmq_sg_id.value
+  
+  backend_alb_sg_id = data.aws_ssm_parameter.backend_alb_sg_id.value
 
   sg_id_list = [
     local.bastion_sg_id, local.mongo_sg_id, local.catalogue_sg_id, local.user_sg_id, local.redis_sg_id,local.mysql_sg_id,
