@@ -3,7 +3,7 @@ resource "aws_lb" "backend" {
     internal = true
     load_balancer_type = "application"
     security_groups = local.backend_alb_sg_id 
-    subnets = [ local.private_subnet ]
+    subnets = local.private_subnet
 }
 
 resource "aws_lb_listener" "front_end" {
