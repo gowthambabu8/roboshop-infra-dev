@@ -26,7 +26,6 @@ resource "aws_route53_record" "backend_alb" {
   zone_id = var.zone_id
   name = "*.backend_alb-${var.environment}.${var.domain_name} "
   type = "A"
-  ttl = "1"
 
   alias {
     name = aws_lb.backend.name
