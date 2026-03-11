@@ -23,5 +23,7 @@ locals {
   redis_service_port = 6379
   mysql_service_port = 3306
   rabbitmq_service_port = 5672
+  http_port = 80
+  https_port = 443
 
 }

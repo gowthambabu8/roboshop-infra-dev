@@ -68,3 +68,12 @@ backend_alb:
   port: 22
   src: user
   dest: rabbitmq
+catalogue:
+- name: catalogue_bastion
+  port: 22
+  src: bastion
+  dest: catalogue
+- name: catalogue_backend_alb
+  port: 80
+  src: backend_alb
+  dest: catalogue
