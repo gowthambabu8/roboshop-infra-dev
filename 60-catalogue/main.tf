@@ -62,12 +62,12 @@ resource "aws_lb_target_group" "catalogue" {
   health_check {
     enabled = true
     healthy_threshold = 2
-    interval = 10
+    interval = 180
     matcher = "200-299"
     path = "/health"
     port = 8080
     protocol = "HTTP"
-    timeout = 2
+    timeout = 120
     unhealthy_threshold = 2
   }
 }
@@ -80,7 +80,7 @@ resource "aws_launch_template" "catalogue" {
   instance_type = "t3.micro"
   vpc_security_group_ids = [local.catalogue_sg_id]
   update_default_version = true
-  
+
   tag_specifications {
     resource_type = "instance"
 
