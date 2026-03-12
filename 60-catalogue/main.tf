@@ -123,7 +123,7 @@ resource "aws_autoscaling_group" "catalogue" {
   target_group_arns = [ aws_lb_target_group.catalogue.arn ]
 
   instance_refresh {
-    strategy = "rolling"
+    strategy = "Rolling"
     preferences {
       min_healthy_percentage = 50
     }
