@@ -45,6 +45,11 @@ resource "aws_ami_from_instance" "catalogue_ami" {
   name = "${var.project}-${var.environment}-catalogue-ami"
   source_instance_id = aws_instance.catalogue.id
   depends_on = [ aws_ec2_instance_state.catalogue ]
+  tags = merge(local.common_tags,
+    {
+      Name = "${var.project}-${var.environment}-catalogue"
+    }
+    )
 }
 
 resource "aws_lb_target_group" "catalogue" {
@@ -63,4 +68,39 @@ resource "aws_lb_target_group" "catalogue" {
     protocol = "HTTP"
     unhealthy_threshold = 2
   }
+}
+
+resource "aws_launch_template" "catalogue" {
+  name = "${var.project}/${var.environment}-catalogue"
+  image_id = aws_ami_from_instance.catalogue_ami.id
+
+  instance_initiated_shutdown_behavior = "terminate"
+  instance_type = "t3.micro"
+  vpc_security_group_ids = [local.catalogue_sg_id]
+
+  tag_specifications {
+    resource_type = "instance"
+
+    tags = merge(local.common_tags,
+    {
+      Name = "${var.project}-${var.environment}-catalogue-instance"
+    }
+    )
+  }
+
+  tag_specifications {
+    resource_type = "volume"
+
+    tags = merge(local.common_tags,
+    {
+      Name = "${var.project}-${var.environment}-catalogue-volume"
+    }
+    )
+  }
+
+  tags = merge(local.common_tags,
+    {
+      Name = "${var.project}-${var.environment}-catalogue"
+    }
+    )
 }
