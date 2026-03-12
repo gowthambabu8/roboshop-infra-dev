@@ -54,18 +54,20 @@ resource "aws_ami_from_instance" "catalogue_ami" {
 
 resource "aws_lb_target_group" "catalogue" {
   name = "${var.project}-${var.environment}-catalogue"
-  port = 80
+  port = 8080
   protocol = "HTTP"
   vpc_id = local.vpc_id
+  deregistration_delay = 60
 
   health_check {
     enabled = true
     healthy_threshold = 2
     interval = 10
-    matcher = "200-209"
+    matcher = "200-299"
     path = "/health"
     port = 8080
     protocol = "HTTP"
+    timeout = 2
     unhealthy_threshold = 2
   }
 }
@@ -77,7 +79,8 @@ resource "aws_launch_template" "catalogue" {
   instance_initiated_shutdown_behavior = "terminate"
   instance_type = "t3.micro"
   vpc_security_group_ids = [local.catalogue_sg_id]
-
+  update_default_version = true
+  
   tag_specifications {
     resource_type = "instance"
 
@@ -170,7 +173,7 @@ resource "aws_alb_listener_rule" "catalogue" {
 
     condition {
       host_header {
-        values = [ "catalogue-backend_alb-${var.environment}.${var.domain_name}" ]
+        values = [ "catalogue.backend_alb-${var.environment}.${var.domain_name}" ]
       }
     }
 
