@@ -47,3 +47,20 @@ resource "aws_ami_from_instance" "catalogue_ami" {
   depends_on = [ aws_ec2_instance_state.catalogue ]
 }
 
+resource "aws_lb_target_group" "catalogue" {
+  name = "${var.project}-${var.environment}-catalogue"
+  port = 80
+  protocol = "HTTP"
+  vpc_id = local.vpc_id
+
+  health_check {
+    enabled = true
+    healthy_threshold = 2
+    interval = 10
+    matcher = "200-209"
+    path = "/health"
+    port = 80
+    protocol = "HTTP"
+    unhealthy_threshold = 2
+  }
+}
