@@ -35,7 +35,7 @@ resource "terraform_data" "bootstrap_catalogue" {
   }
 }
 
-/*resource "aws_ec2_instance_state" "catalogue" {
+resource "aws_ec2_instance_state" "catalogue" {
   instance_id = aws_instance.catalogue.id
   state = "stopped"
   depends_on = [ terraform_data.bootstrap_catalogue ]
@@ -50,7 +50,7 @@ resource "aws_ami_from_instance" "catalogue_ami" {
       Name = "${var.project}-${var.environment}-catalogue"
     }
     )
-}*/
+}
 
 resource "aws_lb_target_group" "catalogue" {
   name = "${var.project}-${var.environment}-catalogue"
@@ -72,7 +72,7 @@ resource "aws_lb_target_group" "catalogue" {
   }
 }
 
-/*resource "aws_launch_template" "catalogue" {
+resource "aws_launch_template" "catalogue" {
   name = "${var.project}-${var.environment}-catalogue"
   image_id = aws_ami_from_instance.catalogue_ami.id
 
@@ -165,7 +165,7 @@ resource "aws_autoscaling_policy" "catalogue" {
   
   target_value = 70.0
   }
-}*/
+}
 
 resource "aws_alb_listener_rule" "catalogue" {
     listener_arn = local.backend_alb_arn
@@ -183,7 +183,7 @@ resource "aws_alb_listener_rule" "catalogue" {
     }
 }
 
-/*resource "terraform_data" "catalogue_delete" {
+resource "terraform_data" "catalogue_delete" {
   triggers_replace = [
     aws_instance.catalogue.id
   ]
@@ -191,4 +191,4 @@ resource "aws_alb_listener_rule" "catalogue" {
   provisioner "local-exec" {
     command = "aws ec2 terminate-instances --instance-ids ${aws_instance.catalogue.id} "
   }
-}*/
+}
