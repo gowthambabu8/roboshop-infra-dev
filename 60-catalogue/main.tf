@@ -61,7 +61,7 @@ resource "aws_lb_target_group" "catalogue" {
 
   health_check {
     enabled = true
-    healthy_threshold = 2
+    healthy_threshold = 20
     interval = 30
     matcher = "200-299"
     path = "/health"
