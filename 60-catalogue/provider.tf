@@ -6,13 +6,13 @@ terraform {
    }
  }
 
-#  backend "s3" {
-#     bucket = "happielearning-dev-state-file"
-#     key = "remote-state-module.tfstate"
-#     encrypt = true
-#     region = "us-east-1"
-#     use_lockfile = true
-#  }
+ backend "s3" {
+    bucket = "happielearning-dev-state-file"
+    key = "remote-state-file-dev-catalogue.tfstate"
+    encrypt = true
+    region = "us-east-1"
+    use_lockfile = true
+ }
 }
 
 provider "aws" {
