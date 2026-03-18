@@ -10,7 +10,7 @@ locals {
   subnet_id = split(",",data.aws_ssm_parameter.private_subnet_id.value)[0]
   sg_id = data.aws_ssm_parameter.catalogue_sg_id.value
   backend_alb_arn = data.aws_ssm_parameter.backend_alb_arn.value
-  component = "backend"
+  component = "catalogue"
   app_version = "v1"
   port_number = 8080
   health_check_path = "/health"
