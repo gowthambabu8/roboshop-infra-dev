@@ -15,9 +15,9 @@ data "aws_ami" "ubuntu" {
 }
 
 data "aws_ssm_parameter" "public_subnet_id" {
-  name = "/${var.project}/${var.environment}/public_subnet"
+  name = "/${var.project}/dev/public_subnet"
 }
 
 data "aws_ssm_parameter" "bastion_sg_id" {
-  name = "/${var.project}/${var.environment}/bastion_sg_id"
+  name = "/${var.project}/dev/bastion_sg_id"
 }

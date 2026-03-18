@@ -63,17 +63,66 @@ rabbitmq:
   port: 5672
   src: user
   dest: rabbitmq
-backend_alb:
-- name: backend_alb_bastion
-  port: 22
-  src: user
-  dest: rabbitmq
 catalogue:
 - name: catalogue_bastion
   port: 22
   src: bastion
   dest: catalogue
 - name: catalogue_backend_alb
-  port: 80
+  port: 8080
   src: backend_alb
   dest: catalogue
+user:
+- name: user_bastion
+  port: 22
+  src: bastion
+  dest: user
+- name: user_backend_alb
+  port: 8080  
+  src: backend_alb
+  dest: user
+cart:
+- name: cart_bastion
+  port: 22
+  src: bastion
+  dest: cart
+- name: cart_backend_alb
+  port: 8080  
+  src: backend_alb
+  dest: cart
+shipping:
+- name: shipping_bastion
+  port: 22
+  src: bastion
+  dest: shipping
+- name: shipping_backend_alb
+  port: 8080  
+  src: backend_alb
+  dest: shipping
+payment:
+- name: user_bastion
+  port: 22
+  src: bastion
+  dest: payment
+- name: payment_backend_alb
+  port: 8080  
+  src: backend_alb
+  dest: payment
+backend_alb:
+- name: backend_alb_frontend
+  port: 80
+  src: frontend
+  dest: backend_alb
+- name: backend_alb_bastion
+  port: 22
+  src: user
+  dest: rabbitmq
+frontend:
+- name: frontend_bastion
+  port: 22
+  src: bastion
+  dest: frontend
+- name: frontend_frontend_alb
+  port: 80
+  src: internet
+  dest: frontend

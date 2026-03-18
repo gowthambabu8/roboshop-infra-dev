@@ -1,19 +1,29 @@
 locals {
   bastion_sg_id = data.aws_ssm_parameter.bastion_sg_id.value
+  
+  #middlewares
   catalogue_sg_id = data.aws_ssm_parameter.catalogue_sg_id.value
   user_sg_id = data.aws_ssm_parameter.user_sg_id.value
   cart_sg_id = data.aws_ssm_parameter.cart_sg_id.value
+  shipping_sg_id = data.aws_ssm_parameter.shipping_sg_id.value
+  payment_sg_id = data.aws_ssm_parameter.payment_sg_id.value
+  
   # databases
   redis_sg_id = data.aws_ssm_parameter.redis_sg_id.value
   mongo_sg_id = data.aws_ssm_parameter.mongo_sg_id.value
   mysql_sg_id = data.aws_ssm_parameter.mysql_sg_id.value
   rabbitmq_sg_id = data.aws_ssm_parameter.rabbitmq_sg_id.value
   
+  # frontend
+  front_sg_id = data.aws_ssm_parameter.frontend_sg_id.value
+  
+  #ALB's
   backend_alb_sg_id = data.aws_ssm_parameter.backend_alb_sg_id.value
+  frontend_alb_sg_id = data.aws_ssm_parameter.frontend_alb_sg_id.value
 
   sg_id_list = [
     local.bastion_sg_id, local.mongo_sg_id, local.catalogue_sg_id, local.user_sg_id, local.redis_sg_id,local.mysql_sg_id,
-    local.rabbitmq_sg_id,local.backend_alb_sg_id
+    local.rabbitmq_sg_id,local.backend_alb_sg_id,local.frontend_alb_sg_id
   ]
 
 
@@ -23,7 +33,8 @@ locals {
   redis_service_port = 6379
   mysql_service_port = 3306
   rabbitmq_service_port = 5672
-  http_port = 8080
+  http_port = 80
   https_port = 443
+  backend_service_port = 8080
 
 }

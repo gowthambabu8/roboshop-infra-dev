@@ -73,7 +73,7 @@ resource "aws_lb_target_group" "catalogue" {
 }
 
 resource "aws_launch_template" "catalogue" {
-  name = "${var.project}-${var.environment}-catalogue"
+  name = "${var.project}-${var.environment}-catalogue-${var.app_version}-${aws_instance.catalogue.id}"
   image_id = aws_ami_from_instance.catalogue_ami.id
 
   instance_initiated_shutdown_behavior = "terminate"

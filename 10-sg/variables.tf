@@ -16,6 +16,8 @@ variable "sg_names"{
     "mongo","redis","mysql","rabbitmq",
     # backend
     "catalogue","cart","user","shipping","payment",
+    # frontend
+    "frontend",
     # backend ALB
     "backend_alb",
     # frontend ALB
