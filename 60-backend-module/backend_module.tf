@@ -1,4 +1,4 @@
-    module "vpc" {
+    module "backend" {
       source = "git::https://github.com/gowthambabu8/terraform-roboshop-component.git?ref=main"
       #source = "C://Users//ADMIN//Downloads//DevOps//git-repo//terraform-roboshop-component"
       project = var.project
