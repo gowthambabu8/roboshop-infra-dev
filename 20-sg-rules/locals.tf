@@ -23,7 +23,7 @@ locals {
 
   sg_id_list = [
     local.bastion_sg_id, local.mongo_sg_id, local.catalogue_sg_id, local.user_sg_id, local.redis_sg_id,local.mysql_sg_id,
-    local.rabbitmq_sg_id,local.backend_alb_sg_id,local.frontend_alb_sg_id
+    local.rabbitmq_sg_id,local.backend_alb_sg_id,local.frontend_alb_sg_id, local.cart_sg_id, local.shipping_sg_id, local.payment_sg_id, local.front_sg_id
   ]
 
 
