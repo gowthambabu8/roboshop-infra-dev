@@ -8,7 +8,7 @@ terraform {
 
  backend "s3" {
     bucket = "happielearning-dev-state-file"
-    key = "remote-state-file-dev-backend-module.tfstate"
+    key = "remote-state-file-dev-backend-module1.tfstate"
     encrypt = true
     region = "us-east-1"
     use_lockfile = true
