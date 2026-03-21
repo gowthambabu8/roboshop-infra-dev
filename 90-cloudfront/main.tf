@@ -65,3 +65,15 @@ resource "aws_cloudfront_distribution" "main" {
     }
     )
   }
+
+  resource "aws_route53_record" "backend_alb" {
+  zone_id = var.zone_id
+  name = "${var.project}-${var.environment}.${var.domain_name}"
+  type = "A"
+
+  alias {
+    name = aws_cloudfront_distribution.main.domain_name
+    zone_id = aws_cloudfront_distribution.main.hosted_zone_id
+    evaluate_target_health = true
+  }
+}
