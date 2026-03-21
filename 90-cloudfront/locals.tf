@@ -6,7 +6,7 @@ locals {
     Terraform = true
   }
 
-  certificate_arn = data.aws_ssm_parameter.frontend_alb_cert.value
+  certificate_arn = data.aws_ssm_parameter.certificate_arn_roboshop.value
   cachingDisabled = data.aws_cloudfront_cache_policy.cachingDisabled.id
   cachingOptimized = data.aws_cloudfront_cache_policy.cachingOptimized.id 
 }
