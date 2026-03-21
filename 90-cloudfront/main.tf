@@ -46,7 +46,7 @@ resource "aws_cloudfront_distribution" "main" {
     cache_policy_id = local.cachingOptimized
     }
 
-    price_class = "PriceClass_ALL"
+    price_class = "PriceClass_All"
 
     restrictions {
       geo_restriction {
