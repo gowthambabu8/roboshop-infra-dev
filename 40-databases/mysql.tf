@@ -76,6 +76,6 @@ resource "aws_iam_role_policy_attachment" "mysql" {
 }
 
 resource "aws_iam_instance_profile" "mysql" {
-  name = "mysql-instance-profile"
+  name = "${var.project}-${var.environment}-mysql-instance-profile"
   role = aws_iam_role.mysql.name
 }
