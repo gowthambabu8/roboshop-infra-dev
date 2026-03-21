@@ -76,4 +76,5 @@ resource "aws_cloudfront_distribution" "main" {
     zone_id = aws_cloudfront_distribution.main.hosted_zone_id
     evaluate_target_health = true
   }
+  allow_overwrite = true
 }
