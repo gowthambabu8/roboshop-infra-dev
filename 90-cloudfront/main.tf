@@ -7,7 +7,7 @@ resource "aws_cloudfront_distribution" "main" {
       http_port = 80
       https_port = 443
       origin_protocol_policy = "https-only"
-      origin_ssl_protocols = ["TLSv1.2","TLSv1.3"]
+      origin_ssl_protocols = ["TLSv1.1","TLSv1.2"]
     }
   }
 
@@ -22,7 +22,7 @@ resource "aws_cloudfront_distribution" "main" {
     allowed_methods = ["DELETE","PATCH","POST","PUT","GET", "HEAD", "OPTIONS"]
     cached_methods = ["GET", "HEAD"]
     target_origin_id = "frontend-${var.environment}.${var.domain_name}"
-    viewer_protocol_policy = "https_only"
+    viewer_protocol_policy = "https-only"
     cache_policy_id = local.cachingDisabled
     }
 
@@ -32,7 +32,7 @@ resource "aws_cloudfront_distribution" "main" {
     allowed_methods = ["GET", "HEAD", "OPTIONS"]
     cached_methods = ["GET", "HEAD", "OPTIONS"]
     target_origin_id = "frontend-${var.environment}.${var.domain_name}"
-    viewer_protocol_policy = "https_only"
+    viewer_protocol_policy = "https-only"
     cache_policy_id = local.cachingOptimized
     }
 
@@ -42,7 +42,7 @@ resource "aws_cloudfront_distribution" "main" {
     allowed_methods = ["GET", "HEAD", "OPTIONS"]
     cached_methods = ["GET", "HEAD", "OPTIONS"]
     target_origin_id = "frontend-${var.environment}.${var.domain_name}"
-    viewer_protocol_policy = "https_only"
+    viewer_protocol_policy = "https-only"
     cache_policy_id = local.cachingOptimized
     }
 
