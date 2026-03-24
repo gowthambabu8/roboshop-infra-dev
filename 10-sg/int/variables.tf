@@ -6,8 +6,9 @@ variable "environment" {
   default = "dev"
 }
 
-variable "sg_name" {
-  default = "mongodb"
+variable "vpc_id" {
+  type = string
+  default = "jskjdgs"
 }
 
 variable "sg_names"{
