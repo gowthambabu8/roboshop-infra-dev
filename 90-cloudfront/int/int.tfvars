@@ -1,4 +1,3 @@
 project = "roboshop"
 environment = "int"
-zone_id= "Z098414817SH5ZF2FCQM0"
 domain_name="int.happielearning.com"
