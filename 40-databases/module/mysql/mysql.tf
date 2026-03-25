@@ -65,7 +65,7 @@ resource "aws_iam_role" "mysql" {
 resource "aws_iam_policy" "mysql" {
   name        = "${var.project}-${var.environment}-mysql-policy"
   description = "Instance policy to read only SSM parameter for mysql root password."
-  policy = templatefile("mysql-policy.json",{
+  policy = templatefile("${path.module}/mysql-policy.json",{
     environment = var.environment
   })
 }
