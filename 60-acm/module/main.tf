@@ -35,3 +35,9 @@ resource "aws_acm_certificate_validation" "example" {
   certificate_arn         = aws_acm_certificate.roboshop.arn
   validation_record_fqdns = [for record in aws_route53_record.example : record.fqdn]
 }
+
+resource "aws_ssm_parameter" "certificate_roboshop" {
+  name = "/${var.project}/${var.environment}/certificate_arn_roboshop"
+  type = "String"
+  value = aws_acm_certificate.roboshop.arn
+}

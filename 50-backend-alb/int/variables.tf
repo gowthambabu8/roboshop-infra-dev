@@ -7,9 +7,9 @@ variable "environment" {
 }
 
 variable "zone_id" {
-  default = "Z04536392HCJLZT52Z8K0"
+  type = string
 }
 
 variable "domain_name" {
-  default = "happielearning.com"
+  type = string
 }
