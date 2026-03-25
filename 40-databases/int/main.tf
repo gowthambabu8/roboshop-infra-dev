@@ -3,6 +3,7 @@ module "mongo" {
     project = var.project
     environment = var.environment
     zone_id = var.zone_id
+    domain_name = var.domain_name
 }
 
 module "redis" {
@@ -10,6 +11,7 @@ module "redis" {
     project = var.project
     environment = var.environment
     zone_id = var.zone_id
+    domain_name = var.domain_name
 }
 
 module "mysql" {
@@ -17,6 +19,7 @@ module "mysql" {
     project = var.project
     environment = var.environment
     zone_id = var.zone_id
+    domain_name = var.domain_name
 }
 
 module "rabbitmq" {
@@ -24,4 +27,5 @@ module "rabbitmq" {
     project = var.project
     environment = var.environment
     zone_id = var.zone_id
+    domain_name = var.domain_name
 }
