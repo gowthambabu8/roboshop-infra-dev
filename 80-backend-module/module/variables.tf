@@ -31,4 +31,5 @@ variable "components" {
 
 variable "domain_name" {
   type = string
+  default = "int.happielearning.com"
 }

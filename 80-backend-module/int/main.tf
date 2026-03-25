@@ -1,4 +1,4 @@
-module "backend_" {
+module "backend_module" {
     source = "../module"
     project = var.project
     environment = var.environment
