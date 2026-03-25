@@ -1,2 +1,3 @@
 environment = "int"
-zone_id= "Z08953022ARAWN464P731"
+zone_id= "Z098414817SH5ZF2FCQM0"
+domain_name="int.happielearning.com"

@@ -11,7 +11,7 @@ variable "zone_id" {
 }
 
 variable "domain_name" {
-  default = "happielearning.com"
+  default = "int.happielearning.com"
 }
 
 variable "app_version" {
