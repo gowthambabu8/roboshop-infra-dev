@@ -1,4 +1,4 @@
-bucket = "happielearning-dev-state-file"
+bucket = "happielearning-state-file-int"
 key = "int/cloudfront/remote-state-file.tfstate"
 encrypt = true
 region = "us-east-1"

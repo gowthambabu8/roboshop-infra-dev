@@ -36,3 +36,9 @@ resource "aws_route53_record" "frontend_alb" {
   }
   allow_overwrite = true
 }
+
+resource "aws_ssm_parameter" "frontend_alb_arn" {
+  name = "/${var.project}/${var.environment}/frontend_alb_arn"
+  type = "String"
+  value = aws_lb_listener.frontend_alb.arn
+}
