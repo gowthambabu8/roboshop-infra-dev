@@ -33,3 +33,9 @@ resource "aws_route53_record" "backend_alb" {
     evaluate_target_health = true
   }
 }
+
+resource "aws_ssm_parameter" "backend_alb_arn" {
+  name = "/${var.project}/${var.environment}/backend_alb_arn"
+  type = "String"
+  value = aws_lb_listener.front_end.arn
+}
