@@ -67,6 +67,7 @@ resource "aws_iam_policy" "mysql" {
   description = "Instance policy to read only SSM parameter for mysql root password."
   policy = templatefile("${path.module}/mysql-policy.json",{
     environment = var.environment
+    account_id = local.account_id
   })
 }
 
