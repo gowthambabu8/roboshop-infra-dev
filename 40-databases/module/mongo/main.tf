@@ -23,7 +23,7 @@ resource "terraform_data" "bootstrap_mongo" {
   }
 
   provisioner "file" {
-    source = "../scripts/bootstrap.sh"
+    source = "${path.module}/../scripts/bootstrap.sh"
     destination = "/tmp/bootstrap.sh"
   }
 
