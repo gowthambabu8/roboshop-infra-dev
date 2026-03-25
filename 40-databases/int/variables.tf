@@ -5,3 +5,7 @@ variable "project" {
 variable "environment" {
   default = "dev"
 }
+
+variable "zone_id" {
+  type = string
+}
