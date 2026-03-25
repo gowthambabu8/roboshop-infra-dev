@@ -13,3 +13,11 @@ variable "zone_id" {
 variable "domain_name" {
   default = "happielearning.com"
 }
+
+variable "app_version" {
+  default = "v3"
+}
+
+variable "component" {
+  default = "roboshop"
+}
