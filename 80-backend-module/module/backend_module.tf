@@ -4,6 +4,7 @@ module "backend" {
       component = each.key
       rule_priority = each.value.rule_priority
       environment = var.environment
+      domain_name = var.domain_name
     }
 # module "catalogue" {
 #   source        = "git::https://github.com/gowthambabu8/terraform-roboshop-component.git?ref=main"
