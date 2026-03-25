@@ -79,3 +79,11 @@ resource "aws_iam_instance_profile" "mysql" {
   name = "${var.project}-${var.environment}-mysql-instance-profile"
   role = aws_iam_role.mysql.name
 }
+
+resource "aws_route53_record" "mysql" {
+  zone_id = var.zone_id
+  name="mysql-${var.environment}.${var.domain_name}"
+  type = "A"
+  ttl = "1"
+  records = [ aws_instance.mysql.private_ip ]
+}
