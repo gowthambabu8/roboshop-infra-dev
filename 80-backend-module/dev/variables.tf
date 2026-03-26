@@ -28,3 +28,7 @@ variable "components" {
     },
    }
 }
+
+variable "domain_name" {
+  type = string
+}
