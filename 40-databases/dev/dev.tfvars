@@ -1,5 +1,5 @@
 project = "roboshop"
-environment = "int"
+environment = "dev"
 zone_id= "Z04536392HCJLZT52Z8K0"
-domain_name="int.happielearning.com"
+domain_name="happielearning.com"
 app_version = "v3"
