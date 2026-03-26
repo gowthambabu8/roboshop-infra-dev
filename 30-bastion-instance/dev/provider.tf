@@ -7,14 +7,10 @@ terraform {
  }
 
  backend "s3" {
-    # bucket = "happielearning-dev-state-file"
-    # key = "remote-state-file-dev-bastion-instance.tfstate"
-    # encrypt = true
-    # region = "us-east-1"
-    # use_lockfile = true
  }
 }
 
 provider "aws" {
- region = "us-east-1"
+  region = "us-east-1"
+  profile = "DEV"
 }

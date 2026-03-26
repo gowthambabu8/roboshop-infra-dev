@@ -1,13 +1,14 @@
 variable "project" {
-  default = "roboshop"
+  type = string
 }
 
 variable "environment" {
-  default = "dev"
+  type = string
 }
 
-variable "sg_name" {
-  default = "mongodb"
+variable "vpc_id" {
+  type = string
+  default = "jskjdgs"
 }
 
 variable "sg_names"{

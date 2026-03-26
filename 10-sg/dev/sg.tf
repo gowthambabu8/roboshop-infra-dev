@@ -1,9 +1,9 @@
     module "sg" {
       count = length(var.sg_names)
-      source = "git::https://github.com/gowthambabu8/terraform-aws-sg.git?ref=main"
+      source = "git::https://github.com/gowthambabu8/terraform-aws-sg.git//sg"
       project = var.project
       environment = var.environment
-      sg_name = replace("${var.project}-${var.environment}-${var.sg_names[count.index]}","_","-")
+      sg_name = var.sg_names[count.index]
       sg_desc = "Allow ssh traffic from backend services"
-      vpc_id = local.vpc_id
+      vpc_id = var.vpc_id
     }
