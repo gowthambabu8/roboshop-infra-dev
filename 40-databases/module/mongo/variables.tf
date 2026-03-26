@@ -1,19 +1,19 @@
 variable "project" {
-  default = "roboshop"
+  type = string
 }
 
 variable "environment" {
-  default = "dev"
+  type = string
 }
 
 variable "zone_id" {
-  default = "Z04536392HCJLZT52Z8K0"
+  type = string
 }
 
 variable "domain_name" {
-  default = "int.happielearning.com"
+  type = string
 }
 
 variable "app_version" {
-  default = "v3"
+  type = string
 }

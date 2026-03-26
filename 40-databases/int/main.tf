@@ -4,6 +4,7 @@ module "mongo" {
     environment = var.environment
     zone_id = var.zone_id
     domain_name = var.domain_name
+    app_version = var.app_version
 }
 
 module "redis" {
@@ -12,6 +13,7 @@ module "redis" {
     environment = var.environment
     zone_id = var.zone_id
     domain_name = var.domain_name
+    app_version = var.app_version
 }
 
 module "mysql" {
@@ -20,6 +22,7 @@ module "mysql" {
     environment = var.environment
     zone_id = var.zone_id
     domain_name = var.domain_name
+    app_version = var.app_version
 }
 
 module "rabbitmq" {
@@ -28,4 +31,5 @@ module "rabbitmq" {
     environment = var.environment
     zone_id = var.zone_id
     domain_name = var.domain_name
+    app_version = var.app_version
 }

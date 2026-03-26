@@ -1,10 +1,11 @@
 variable "project" {
-  default = "roboshop"
+  type = string
 }
 
 variable "environment" {
   type = string
 }
+
 variable "zone_id" {
   type = string
 }
@@ -14,5 +15,5 @@ variable "domain_name" {
 }
 
 variable "app_version" {
-  default = "v3"
+  type = string
 }

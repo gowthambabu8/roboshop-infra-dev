@@ -15,9 +15,9 @@ variable "domain_name" {
 }
 
 variable "app_version" {
-  default = "v3"
+  type = string
 }
 
 variable "component" {
-  default = "roboshop"
+  type = string
 }
